@@ -52,6 +52,8 @@ namespace EmployeeManagement.Test
             // Act
             var result = await _internalEmployeesController.GetInternalEmployees();
 
+            //Assert.IsType<OkObjectResult>(result);
+
             // Assert
             var actionResult = Assert
              .IsType<ActionResult<IEnumerable<Models.InternalEmployeeDto>>>(result);
