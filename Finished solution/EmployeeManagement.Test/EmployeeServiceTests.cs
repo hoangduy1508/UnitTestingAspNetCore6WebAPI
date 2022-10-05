@@ -1,6 +1,8 @@
-﻿using EmployeeManagement.Business.EventArguments;
+﻿using EmployeeManagement.Business;
+using EmployeeManagement.Business.EventArguments;
 using EmployeeManagement.Business.Exceptions;
 using EmployeeManagement.DataAccess.Entities;
+using EmployeeManagement.Services.Test;
 using EmployeeManagement.Test.Fixtures;
 using Xunit;
 using Xunit.Abstractions;
@@ -8,7 +10,7 @@ using Xunit.Abstractions;
 namespace EmployeeManagement.Test
 {
     [Collection("EmployeeServiceCollection")]
-    public class EmployeeServiceTests //: IClassFixture<EmployeeServiceFixture>
+    public class EmployeeServiceTests //: IClassFixture<EmployeeServiceFixture> uncomment it for class sharing context with Class fixture approach
     {
         private readonly EmployeeServiceFixture _employeeServiceFixture;
         private readonly ITestOutputHelper _testOutputHelper;
@@ -24,7 +26,11 @@ namespace EmployeeManagement.Test
         [Fact]
         public void CreateInternalEmployee_InternalEmployeeCreated_MustHaveAttendedFirstObligatoryCourse_WithObject()
         {
-            // Arrange          
+            // Arrange
+            //var employeeManagementTestDataRepository = new EmployeeManagementTestDataRepository();
+            //var employeeService = new EmployeeService(
+            //    employeeManagementTestDataRepository,
+            //    new EmployeeFactory());
             var obligatoryCourse = _employeeServiceFixture
                 .EmployeeManagementTestDataRepository
                 .GetCourse(Guid.Parse("37e03ca7-c730-4351-834c-b66f280cdb01"));
